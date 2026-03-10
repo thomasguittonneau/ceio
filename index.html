@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arkunir — Directeur Marketing | ce io</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #fafafa;
+      --grey: #6b6b6b;
+      --light: #ebebeb;
+      --accent: #ff3b3b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--light);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      background: var(--black);
+      color: var(--white);
+      padding: 3px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      margin-top: 56px;
+      padding: 6rem 2rem 4rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      border-bottom: 3px solid var(--black);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--grey);
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .hero-tweet {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .hero-tweet .tweet-handle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-bottom: 0.4rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--light);
+      max-width: 680px;
+      margin: 0 auto 4rem;
+    }
+
+    /* SECTION */
+    section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* DECISIONS */
+    .decisions {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--light);
+      border: 1px solid var(--light);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .decision {
+      background: var(--white);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: background 0.15s;
+    }
+
+    .decision:hover { background: #f5f5f5; }
+
+    .decision-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--grey);
+      min-width: 24px;
+      margin-top: 2px;
+    }
+
+    .decision-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .decision-text strong { font-weight: 600; }
+
+    .decision-status {
+      margin-left: auto;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 2px 7px;
+      border-radius: 2px;
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    .decision-status.pending {
+      background: #fff8e1;
+      color: #f57f17;
+    }
+
+    /* TIMER */
+    .timer-block {
+      border: 1px solid var(--light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .timer-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 0.8rem;
+    }
+
+    .timer-display {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .timer-note {
+      font-size: 0.8rem;
+      color: var(--grey);
+      margin-top: 0.5rem;
+    }
+
+    /* MESSAGE */
+    .message-box {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .message-box .who {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: #888;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .message-box p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .message-box p strong { font-weight: 600; color: var(--white); }
+
+    /* BUTTONS */
+    .btn-row {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      border: 1.5px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-primary:hover { background: #222; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--black);
+      border-color: var(--light);
+    }
+
+    .btn-secondary:hover { border-color: #bbb; background: #f5f5f5; }
+
+    .btn-disabled {
+      background: var(--light);
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--black);
+      color: var(--white);
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 200;
+      white-space: nowrap;
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--light);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--grey);
+      letter-spacing: 0.05em;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    section:nth-child(2) { animation-delay: 0.55s; }
+    section:nth-child(3) { animation-delay: 0.65s; }
+    section:nth-child(4) { animation-delay: 0.75s; }
+
+    @media (max-width: 480px) {
+      .decision { flex-wrap: wrap; }
+      .decision-status { margin-left: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">ce io</span>
+  <span class="badge">Communiqué officiel</span>
+</header>
+
+<div class="hero">
+  <p class="hero-eyebrow">Nomination · Mars 2026</p>
+  <h1 class="hero-title">Bienvenue à notre nouveau<br><em>Directeur Marketing</em></h1>
+  <p class="hero-sub">
+    Après une longue procédure de recrutement (un tweet), nous sommes ravis d'officialiser la nomination d'@Arkunir à la tête du pôle marketing de ce io.
+  </p>
+  <div class="hero-tweet">
+    <div class="tweet-handle">@Arkunir · il y a 3h</div>
+    "Je viens de me réveiller à 14h j'apprends en ouvrant Twitter que j'ai un nouveau taff"
+  </div>
+</div>
+
+<hr class="divider">
+
+<section>
+  <p class="section-label">Premières décisions stratégiques</p>
+  <h2>L'agenda du Directeur</h2>
+
+  <div class="decisions">
+    <div class="decision">
+      <span class="decision-num">01</span>
+      <span class="decision-text"><strong>Changer tous les logos</strong> — comme suggéré dans le communiqué officiel initial.</span>
+      <span class="decision-status">Appliqué</span>
+    </div>
+    <div class="decision">
+      <span class="decision-num">02</span>
+      <span class="decision-text"><strong>Reculer les heures de réunion</strong> — aucune réunion avant 15h, par respect pour le Directeur.</span>
+      <span class="decision-status">Appliqué</span>
+    </div>
+    <div class="decision">
+      <span class="decision-num">03</span>
+      <span class="decision-text"><strong>Rebaptiser le département marketing</strong> en "Pôle Réveil Tardif & Communication".</span>
+      <span class="decision-status pending">En cours</span>
+    </div>
+    <div class="decision">
+      <span class="decision-num">04</span>
+      <span class="decision-text"><strong>Redéfinir la stratégie de contenu</strong> — uniquement des tweets en sortant du lit.</span>
+      <span class="decision-status pending">En attente</span>
+    </div>
+    <div class="decision">
+      <span class="decision-num">05</span>
+      <span class="decision-text"><strong>Fiche de paie</strong> — envoyée avant même l'acceptation du poste. C'est contractuel.</span>
+      <span class="decision-status">Confirmé</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="section-label">Depuis la nomination</p>
+  <h2>Temps en poste</h2>
+
+  <div class="timer-block">
+    <div class="timer-label">@Arkunir est officiellement Directeur Marketing depuis</div>
+    <div class="timer-display" id="timer">Calcul...</div>
+    <div class="timer-note">Dont la majorité passée à dormir. Performance remarquable.</div>
+  </div>
+</section>
+
+<section>
+  <p class="section-label">Communiqué du Directeur</p>
+  <h2>Sa réaction officielle</h2>
+
+  <div class="message-box">
+    <div class="who">@Arkunir — Directeur Marketing, ce io</div>
+    <p>
+      "Je viens de me réveiller à 14h j'apprends en ouvrant Twitter que j'ai un nouveau taff.<br><br>
+      <strong>C'est parfait.</strong> J'accepte. Envoyez le contrat. Je commence demain. Ou après-demain. On verra."
+    </p>
+  </div>
+
+  <div class="btn-row">
+    <a href="https://twitter.com/intent/tweet?text=Félicitations%20à%20@Arkunir%20pour%20sa%20nomination%20au%20poste%20de%20Directeur%20Marketing%20de%20ce%20io%20!%20Il%20l'a%20appris%20en%20se%20réveillant%20à%2014h%20🎉" 
+       target="_blank" class="btn btn-primary">
+      🎉 Féliciter @Arkunir
+    </a>
+    <button class="btn btn-secondary" onclick="copyLink()">
+      🔗 Copier le lien
+    </button>
+    <button class="btn btn-disabled" disabled>
+      Refuser le poste (désactivé)
+    </button>
+  </div>
+</section>
+
+<footer>
+  ce io · Communiqué officiel n°001 · Directeur Marketing nommé sans consentement préalable
+</footer>
+
+<div class="toast" id="toast">✓ Lien copié !</div>
+
+<script>
+  // Timer depuis le tweet (approximatif : ~3h avant maintenant)
+  const nominationDate = new Date(Date.now() - 3 * 60 * 60 * 1000);
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = now - nominationDate;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('timer').textContent =
+      (d > 0 ? d + 'j ' : '') + h + 'h ' + m + 'm ' + s + 's';
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).catch(() => {});
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+</script>
+
+</body>
+</html>
